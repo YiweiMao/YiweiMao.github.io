@@ -27,7 +27,7 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 | 2015 -- 2019 | Dean’s list for Academic Excellence (Weighted Average Mark > 85) |
 | 2015 | The Rueben F Scarf Award for Commitment |
 | 2014 | RoboCup Junior Australia Competition (Open Soccer Division) |
-| | 1st in State + 2nd in Nationals |
+|   | 1st in State + 2nd in Nationals |
 
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
