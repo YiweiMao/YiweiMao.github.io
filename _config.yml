@@ -11,14 +11,14 @@ description: Description of site. ❤
 github_username: YiweiMao
 
 # Email and twitter are optional:
-email: 
+email: <ewaymao@gmail.com>
 twitter_username: 
 
 # Set this to true to get LaTeX math equation support
 use_math: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics:
+google_analytics: 61578211
 
 # Everything below here can be ignored, unless you want to change the theme entirely
 theme: minima
