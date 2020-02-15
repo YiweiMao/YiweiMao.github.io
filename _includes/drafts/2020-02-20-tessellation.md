@@ -1,4 +1,21 @@
 # Tessellation
+> An introduction to tessellation.
 
-TODO: add some images
+1. TOC
+{:toc}
+
+## What is Tessellation
+
+Dynamically
+
+## Tessellation Factors
+
+
+## Parity
+
+
+## Output Domains
+
+
+![]()
 
