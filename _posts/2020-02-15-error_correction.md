@@ -1,19 +1,17 @@
-# Title
-> summary
-
 
 # Hamming Code for Error Correction
+> 
 
 1. TOC
 {:toc}
 
-## Introduction
+# Introduction
 
 Digital communication encoded into bits need to be transmitted across noisy channels and inevitably suffer from errors. This can be a huge problem for systems that cannot deal with errors. An example of this is interplanetary satellites with limited bandwidth and long communication time delays - by the time the effects of an error is detected, it may be too late to send correction commands. Such systems need to be able to detect errors and correct them if possible. A real application of error correcting codes was on the Mariner 9 mission which required pictures to be sent back from Mars (Thompson and Shannon, 1974) (this used an error correcting Hadamard code). 
 
 This blog will investigate the encoder and decoder stage - how digital information is encoded with error correcting information using the power of numbers. The idea of redundancy and parity is introduced before the Hamming code is described. An example using `Hamming(7,4)` is given followed by the notion of the Hamming distance. The essay will conclude with a brief outline of developments since Hamming's original paper in 1950.
 
-## Redundancy
+# Redundancy
 
 Let the bit length of a message be denoted by $m$. This message can represent $2^m$ unique symbols or characters. If a single bit within the $m$ length bit string is flipped, a different symbol is reconstructed and there is no way of knowing if an error occurred. In order to encode error detection and correction, additional redundant bits are needed. Let the bit length of the redundant bits be denoted by $k$ so the total length of the bits that need to be transmitted is $n=m+k$.
 
@@ -22,11 +20,11 @@ $$
 K := \frac{n}{m}
 $$
 and this measures the efficiency of the encoding. 
-Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. A comprehensive list of papers in this field can be found at [compressedsensing.com](compressedsensing.com). This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem (Yu and Wang 2007).
+Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. A comprehensive list of papers in this field can be found at [links](compressedsensing.com). This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1] (Yu and Wang 2007).
 
 A core part of encoding information into the redundant bits is the idea of parity.
 
-## Parity
+# Parity
 
 In the context of binary numbers, parity refers to the number of 1's that appear in the binary representation. Parity can be encoded by a single bit, for instance the $n^{th}$ bit $b_n$, so that the whole bit string $b_n b_{n-1} \dots b_2 b_1$ contains an even number of 1's. The parity bit is set to 1 if there are an odd number of 1s in the preceding $n-1$ bits, and set to 0 otherwise:
 
@@ -36,7 +34,7 @@ $$
 
 This allows for a single bit error to be detected because if there is a single bit flip, there is no longer an even number of 1's in the bit string. However, double bit errors cannot be detected. The next step is to add error correcting capability and this is given by the Hamming code (Hamming 1950). The following section will introduce the Hamming(7,4) code which has $n=7$ and $m=4$ (this will have $k=n-m=3$ redundant bits).
 
-## Hamming Code
+# Hamming Code
 
 A Hamming code is constructed by assigning the $k$ redundant bits as \textit{check bits} over select $m$ information bits. If the check bit received in an $n$ bit string matches the computed parity, then a 0 is recorded, and if it disagrees, a 1 is recorded. The sequence of check bits given by $\mathrm{c_k...c_1}$ provides the position of a single error and is called the \textit{checking number}. If the checking number is zero, then no error was detected. The checking number is required to represent $m+k+1$ combinations giving a condition
 $$
@@ -59,12 +57,12 @@ The $i^{th}$ check bit records the parity of bit positions which have a 1 in the
 | 15 | 1111 | 15 | 1111 | 15 | 1111 |
 
 
-### Error Detection and Correction Example
+## Error Detection and Correction Example
 
 Consider a 7 bit string $\mathrm{b_7b_6b_5b_4b_3b_2b_1}=\texttt{0111100}$ which encodes a bit string ${\mathrm{m_4 m_3 m_2 m_1} = \texttt{b1011} = 11}$ and check bits $\mathrm{k_3 k_2 k_1} = \texttt{b001}$. This is the Hamming(7,4) code meaning $n=7$ and $m=4$.
 
 The original bit string:
-![origbits.png](attachment:origbits.png)
+![](/images/2020-02-15-error_correction_files/orig_bits.png "Original bits")
 
 Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. The first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
 
@@ -72,13 +70,13 @@ This gives a checking number $c_3 c_2 c_1= \texttt{101}$ which is position 5. Th
 
 Another example of a Hamming code is triple repetition. Each bit is sent three times and majority rules is applied to decode the message. This is Hamming(3,1) and uses 2 parity bits. Using this code, single errors can be corrected *or* double errors can be detected but not corrected. This makes sense because if a single bit is flipped, the majority rule recovers the correct bit. However, if two bits are flipped, these errors can be detected but if correction is applied, the wrong bit will be reconstructed. The (7,4) code Hamming introduced in his paper can be extended to (8,4) allowing for single error correction *and* double error detection. 
 
-### Single Error Correction plus Double Error Detection
+## Single Error Correction plus Double Error Detection
 
 Double error detection can be added by using another bit that represents the parity for positions, that when expressed in binary, have a 1 in the $4^{th}$ position. Then there exists three cases with the first being all parity checks pass. The second case is when there is a single error and the last parity check fails. The checking number then gives the position of the error with zero now meaning the error is in the last check position. The last case is then the last parity check is satisfied but the checking number indicates that there is an error. In this case, there is a double error. 
 
 Hamming (1950) gives a way of determining what actions can be done (error detection or error correction) by introducing a metric.
 
-## Hamming Distance
+# Hamming Distance
 
 The distance $D$ between two bit strings ${x}$ and ${y}$ is given by the Hamming distance.
 
@@ -117,7 +115,7 @@ When there is a distance of 2 between the codes, then a single error will conver
     
     
 
-## Developments in Error Correction Codes
+# Developments in Error Correction Codes
 
 More general codes can be made by constructing a parity check matrix which contains error correction abilities based on linear dependent columns\cite{gallager1962low}. From there, the mapping between messages and code can be found using a generator matrix computed from the parity matrix\cite{mackay1996near}. The example shown in this essay relied on operations on a Galois (or finite) field with characteristic 2 (so addition and multiplication is done modulo 2). Other fields can also be used such $\mathbf{F}_{11}$ which is implemented in the User Datagram Protocol (UDP). UDP can also fix erasures - when bits are lost rather than flipped\cite{postel1980user}. There is also a family of Hamming codes which include extensions and shortenings that allow Hamming codes to perform better or improve the redundancy factor\cite{wei1991generalized}.
 
@@ -127,10 +125,10 @@ Many different types of codes exist including cyclic codes and convolutional or 
 
 
 
-## Conclusion
+# Conclusion
 
 The main ideas of error correction codes using the Hamming code were explored with the help of an example. Hamming distance was introduced which gives an indication of what actions can be done depending on the minimum Hamming distance. Finally, a brief overview of developments since Hamming's paper was given. 
 
-## References
+# References
 
-
+[^1] (Yu and Wang 2007)
