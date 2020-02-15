@@ -29,6 +29,11 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 | 2014 | RoboCup Junior Australia Competition (Open Soccer Division) 1st in State + 2nd in Nationals + Innovation Award |
 
 
+| Year | Award |
+|-:|:-|
+| 2019 | First Class Honours |
+| 2017 -- 2018 | Norbert Quirk Prizes No 3 |
+
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
 Personal blog: <https://yiweimao.github.io>
