@@ -142,7 +142,7 @@ The main ideas of error correction codes using the Hamming code were explored wi
 
 # References
 
-[^1]: Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the Ninth International Congress of the International Commission for Optics (ico IX), volume 9. National Academies, 1974.
+[^1]: "Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the Ninth International Congress of the International Commission for Optics (ico IX), volume 9. National Academies, 1974."
 
 [^2]: Hengyong Yu and Ge Wang. Compressed sensing based interior tomography. Physics in medicine & biology, 54(9):2791, 2009.
 
