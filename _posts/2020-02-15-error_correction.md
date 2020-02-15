@@ -1,13 +1,13 @@
 
 # Hamming Code for Error Correction
-> 
+> A walkthrough on Hamming codes.
 
 1. TOC
 {:toc}
 
 # Introduction
 
-Digital communication encoded into bits need to be transmitted across noisy channels and inevitably suffer from errors. This can be a huge problem for systems that cannot deal with errors. An example of this is interplanetary satellites with limited bandwidth and long communication time delays - by the time the effects of an error is detected, it may be too late to send correction commands. Such systems need to be able to detect errors and correct them if possible. A real application of error correcting codes was on the Mariner 9 mission which required pictures to be sent back from Mars (Thompson and Shannon, 1974) (this used an error correcting Hadamard code). 
+Digital communication encoded into bits need to be transmitted across noisy channels, and inevitably suffer from errors. This can be a huge problem for systems that cannot deal with errors. An example of this is interplanetary satellites with limited bandwidth and long communication time delays - by the time the effects of an error is detected, it may be too late to send correction commands. Such systems need to be able to detect errors and correct them if possible. A real application of error correcting codes was on the Mariner 9 mission which required pictures to be sent back from Mars (Thompson and Shannon, 1974) (this used an error correcting Hadamard code). 
 
 This blog will investigate the encoder and decoder stage - how digital information is encoded with error correcting information using the power of numbers. The idea of redundancy and parity is introduced before the Hamming code is described. An example using `Hamming(7,4)` is given followed by the notion of the Hamming distance. The essay will conclude with a brief outline of developments since Hamming's original paper in 1950.
 
@@ -20,7 +20,7 @@ $$
 K := \frac{n}{m}
 $$
 and this measures the efficiency of the encoding. 
-Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. A comprehensive list of papers in this field can be found at [links](compressedsensing.com). This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1] (Yu and Wang 2007).
+Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1] (Yu and Wang 2007).
 
 A core part of encoding information into the redundant bits is the idea of parity.
 
@@ -131,4 +131,4 @@ The main ideas of error correction codes using the Hamming code were explored wi
 
 # References
 
-[^1] (Yu and Wang 2007)
+[^1]: (Yu and Wang 2007)
