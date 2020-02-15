@@ -143,20 +143,37 @@ The main ideas of error correction codes using the Hamming code were explored wi
 # References
 
 [^1]: Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the Ninth International Congress of the International Commission for Optics (ico IX), volume 9. National Academies, 1974.
+
 [^2]: Hengyong Yu and Ge Wang. Compressed sensing based interior tomography. Physics in medicine & biology, 54(9):2791, 2009.
+
 [3]: Richard W Hamming. Error detecting and error correcting codes. The Bell system technical journal, 29(2):147–160, 1950.
+
 [^4]: Robert Gallager. Low-density parity-check codes. IRE Transactions on information theory, 8(1):21–28, 1962.
+
 [^5]: David JC MacKay and Radford M Neal. Near shannon limit performance of low density parity check codes. Electronics letters, 32(18):1645–1646, 1996.
+
 [^6]: Jon Postel. User datagram protocol. Isi, 1980.
+
 [^7]: Victor K Wei. Generalized hamming weights for linear codes. IEEE Transactions on information theory, 37(5):1412–1418, 1991.
+
 [^8]: Stephen B Wicker and Vijay K Bhargava. Reed-Solomon codes and their applications. John Wiley & Sons, 1999.
+
 [^9]: Robert Chien. Cyclic decoding procedures for bose-chaudhuri-hocquenghem codes. IEEE Transactions on information theory, 10(4):357–363, 1964.9
+
 [^10]: Sybille Hellebrand, Janusz Rajski, Steffen Tarnick, Srikanth Venkataraman, and Bernard Courtois. Built-in test for circuits with scan based on reseeding of multiple-polynomial linear feedback shift registers. IEEE Transactions on Computers, 44(2):223–233, 1995.
+
 [^11]: T-K Truong, J-H Jeng, and Irving S Reed. Fast algorithm for computing the roots of error locator polynomials up to degree 11 in reed-solomon decoders. IEEE Transactions on Communications, 49(5):779–783, 2001.
+
 [^12]: G-L Feng and Kenneth K Tzeng. A generalization of the berlekamp-massey algorithm for multisequence shift-register synthesis with applications to decoding cyclic codes. IEEE Transactions on Information Theory, 37(5):1274–1287, 1991.
+
 [^13]: Douglas A Leonard. A generalized forney formula for algebraic-geometric codes. IEEE Transactions on Information Theory, 42(4):1263–1268, 1996.
+
 [^14]: Yasuo Sugiyama, Masao Kasahara, Shigeichi Hirasawa, and Toshihiko Namekawa. A method for solving key equation for decoding goppa codes. Information and Control, 27(1):87–99, 1975.
+
 [^15]: Richard E. Blahut. Transform techniques for error control codes. IBM Journal of Research and development, 23(3):299–315, 1979.
+
 [^16]: R Chien. Burst-correcting codes with high-speed decoding. IEEE Transactions on Information Theory, 15(1):109–113, 1969.
+
 [^17]: G David Forney. The viterbi algorithm. Proceedings of the IEEE, 61(3):268–278, 1973.
+
 [^18]: Yuan Xing Li, Robert H Deng, and Xin Mei Wang. On the equivalence of mceliece’s and niederreiter’s public-key cryptosystems. IEEE Transactions on Information Theory, 40(1):271–273, 1994.
