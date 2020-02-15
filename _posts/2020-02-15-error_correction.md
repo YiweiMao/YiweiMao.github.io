@@ -7,7 +7,7 @@
 
 # Introduction
 
-Digital communication encoded into bits need to be transmitted across noisy channels, and inevitably suffer from errors. This can be a huge problem for systems that cannot deal with errors. An example of this is interplanetary satellites with limited bandwidth and long communication time delays - by the time the effects of an error is detected, it may be too late to send correction commands. Such systems need to be able to detect errors and correct them if possible. A real application of error correcting codes was on the Mariner 9 mission which required pictures to be sent back from Mars (Thompson and Shannon, 1974) (this used an error correcting Hadamard code). 
+Digital communication encoded into bits need to be transmitted across noisy channels, and inevitably suffer from errors. This can be a huge problem for systems that cannot deal with errors. An example of this is interplanetary satellites with limited bandwidth and long communication time delays - by the time the effects of an error is detected, it may be too late to send correction commands. Such systems need to be able to detect errors and correct them if possible. A real application of error correcting codes was on the Mariner 9 mission which required pictures to be sent back from Mars[^1] (this used an error correcting Hadamard code). 
 
 This blog will investigate the encoder and decoder stage - how digital information is encoded with error correcting information using the power of numbers. The idea of redundancy and parity is introduced before the Hamming code is described. An example using `Hamming(7,4)` is given followed by the notion of the Hamming distance. The essay will conclude with a brief outline of developments since Hamming's original paper in 1950.
 
@@ -20,7 +20,7 @@ $$
 K := \frac{n}{m}
 $$
 and this measures the efficiency of the encoding. 
-Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1].
+Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^2].
 
 A core part of encoding information into the redundant bits is the idea of parity.
 
@@ -62,7 +62,7 @@ The $i^{th}$ check bit records the parity of bit positions which have a 1 in the
 Consider a 7 bit string $\mathrm{b_7b_6b_5b_4b_3b_2b_1}=\texttt{0111100}$ which encodes a bit string ${\mathrm{m_4 m_3 m_2 m_1} = \texttt{b1011} = 11}$ and check bits $\mathrm{k_3 k_2 k_1} = \texttt{b001}$. This is the Hamming(7,4) code meaning $n=7$ and $m=4$.
 
 The original bit string:
-![](/images/2020-02-15-error_correction_files/orig_bits.png)
+![](/images/2020-02-15-error_correction_files/origbits.png)
 
 Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. In Figure 1, the first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
 
@@ -84,7 +84,7 @@ Another example of a Hamming code is triple repetition. Each bit is sent three t
 
 Double error detection can be added by using another bit that represents the parity for positions, that when expressed in binary, have a 1 in the $4^{th}$ position. Then there exists three cases with the first being all parity checks pass. The second case is when there is a single error and the last parity check fails. The checking number then gives the position of the error with zero now meaning the error is in the last check position. The last case is then the last parity check is satisfied but the checking number indicates that there is an error. In this case, there is a double error. 
 
-Hamming (1950) gives a way of determining what actions can be done (error detection or error correction) by introducing a metric.
+Hamming [(1950)][3] gives a way of determining what actions can be done (error detection or error correction) by introducing a metric.
 
 # Hamming Distance
 
@@ -142,43 +142,42 @@ The main ideas of error correction codes using the Hamming code were explored wi
 
 # References
 
-[1]: Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the
+[^1]: Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the
 Ninth International Congress of the International Commission for Optics (ico IX),
 volume 9. National Academies, 1974.
-[2]: Hengyong Yu and Ge Wang. Compressed sensing based interior tomography. Physics
+[^2]: Hengyong Yu and Ge Wang. Compressed sensing based interior tomography. Physics
 in medicine & biology, 54(9):2791, 2009.
 [3]: Richard W Hamming. Error detecting and error correcting codes. The Bell system
 technical journal, 29(2):147–160, 1950.
-[4]: Robert Gallager. Low-density parity-check codes. IRE Transactions on information
+[^4]: Robert Gallager. Low-density parity-check codes. IRE Transactions on information
 theory, 8(1):21–28, 1962.
-[5]: David JC MacKay and Radford M Neal. Near shannon limit performance of low
+[^5]: David JC MacKay and Radford M Neal. Near shannon limit performance of low
 density parity check codes. Electronics letters, 32(18):1645–1646, 1996.
-[6]: Jon Postel. User datagram protocol. Isi, 1980.
-[7]: Victor K Wei. Generalized hamming weights for linear codes. IEEE Transactions
+[^6]: Jon Postel. User datagram protocol. Isi, 1980.
+[^7]: Victor K Wei. Generalized hamming weights for linear codes. IEEE Transactions
 on information theory, 37(5):1412–1418, 1991.
-[8]: Stephen B Wicker and Vijay K Bhargava. Reed-Solomon codes and their applications.
+[^8]: Stephen B Wicker and Vijay K Bhargava. Reed-Solomon codes and their applications.
 John Wiley & Sons, 1999.
-[9]: Robert Chien. Cyclic decoding procedures for bose-chaudhuri-hocquenghem codes.
-IEEE Transactions on information theory, 10(4):357–363, 1964.
-9
-[10]: Sybille Hellebrand, Janusz Rajski, Steffen Tarnick, Srikanth Venkataraman, and
+[^9]: Robert Chien. Cyclic decoding procedures for bose-chaudhuri-hocquenghem codes.
+IEEE Transactions on information theory, 10(4):357–363, 1964.9
+[^10]: Sybille Hellebrand, Janusz Rajski, Steffen Tarnick, Srikanth Venkataraman, and
 Bernard Courtois. Built-in test for circuits with scan based on reseeding of
 multiple-polynomial linear feedback shift registers. IEEE Transactions on Computers, 44(2):223–233, 1995.
-[11]: T-K Truong, J-H Jeng, and Irving S Reed. Fast algorithm for computing the roots
+[^11]: T-K Truong, J-H Jeng, and Irving S Reed. Fast algorithm for computing the roots
 of error locator polynomials up to degree 11 in reed-solomon decoders. IEEE Transactions on Communications, 49(5):779–783, 2001.
-[12]: G-L Feng and Kenneth K Tzeng. A generalization of the berlekamp-massey algorithm for multisequence shift-register synthesis with applications to decoding cyclic
+[^12]: G-L Feng and Kenneth K Tzeng. A generalization of the berlekamp-massey algorithm for multisequence shift-register synthesis with applications to decoding cyclic
 codes. IEEE Transactions on Information Theory, 37(5):1274–1287, 1991.
-[13]: Douglas A Leonard. A generalized forney formula for algebraic-geometric codes.
+[^13]: Douglas A Leonard. A generalized forney formula for algebraic-geometric codes.
 IEEE Transactions on Information Theory, 42(4):1263–1268, 1996.
-[14]: Yasuo Sugiyama, Masao Kasahara, Shigeichi Hirasawa, and Toshihiko Namekawa. A
+[^14]: Yasuo Sugiyama, Masao Kasahara, Shigeichi Hirasawa, and Toshihiko Namekawa. A
 method for solving key equation for decoding goppa codes. Information and Control,
 27(1):87–99, 1975.
-[15]: Richard E. Blahut. Transform techniques for error control codes. IBM Journal of
+[^15]: Richard E. Blahut. Transform techniques for error control codes. IBM Journal of
 Research and development, 23(3):299–315, 1979.
-[16]: R Chien. Burst-correcting codes with high-speed decoding. IEEE Transactions on
+[^16]: R Chien. Burst-correcting codes with high-speed decoding. IEEE Transactions on
 Information Theory, 15(1):109–113, 1969.
-[17]: G David Forney. The viterbi algorithm. Proceedings of the IEEE, 61(3):268–278,
+[^17]: G David Forney. The viterbi algorithm. Proceedings of the IEEE, 61(3):268–278,
 1973.
-[18]: Yuan Xing Li, Robert H Deng, and Xin Mei Wang. On the equivalence of mceliece’s
+[^18]: Yuan Xing Li, Robert H Deng, and Xin Mei Wang. On the equivalence of mceliece’s
 and niederreiter’s public-key cryptosystems. IEEE Transactions on Information
 Theory, 40(1):271–273, 1994.
