@@ -17,7 +17,10 @@ I am also a musician in my spare time playing the Euphonium in the Parramatta Sa
 ## University
 I studied Mechatronics Engineering and Advanced Science (majored in Physics and Maths) at the University of Sydney. 
 
+
 ### Academic Awards
+
+
 | Year | Award |
 | -: | :- |
 | 2019 | First Class Honours |
@@ -27,6 +30,7 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 | 2015 -- 2019 | Dean’s list for Academic Excellence (Weighted Average Mark > 85) |
 | 2015 | The Rueben F Scarf Award for Commitment |
 | 2014 | RoboCup Junior Australia National Competition (2nd place) |
+
 
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
