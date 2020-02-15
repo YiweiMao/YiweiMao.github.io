@@ -20,11 +20,11 @@ $$
 K := \frac{n}{m}
 $$
 and this measures the efficiency of the encoding. 
-Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1] (Yu and Wang 2007).
+Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^1].
 
 A core part of encoding information into the redundant bits is the idea of parity.
 
-# Parity
+# Parity                                                                
 
 In the context of binary numbers, parity refers to the number of 1's that appear in the binary representation. Parity can be encoded by a single bit, for instance the $n^{th}$ bit $b_n$, so that the whole bit string $b_n b_{n-1} \dots b_2 b_1$ contains an even number of 1's. The parity bit is set to 1 if there are an odd number of 1s in the preceding $n-1$ bits, and set to 0 otherwise:
 
@@ -62,9 +62,19 @@ The $i^{th}$ check bit records the parity of bit positions which have a 1 in the
 Consider a 7 bit string $\mathrm{b_7b_6b_5b_4b_3b_2b_1}=\texttt{0111100}$ which encodes a bit string ${\mathrm{m_4 m_3 m_2 m_1} = \texttt{b1011} = 11}$ and check bits $\mathrm{k_3 k_2 k_1} = \texttt{b001}$. This is the Hamming(7,4) code meaning $n=7$ and $m=4$.
 
 The original bit string:
-![](/images/2020-02-15-error_correction_files/orig_bits.png "Original bits")
+![](/images/2020-02-15-error_correction_files/orig_bits.png)
 
-Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. The first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
+Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. In Figure 1, the first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
+
+![](/images/2020-02-15-error_correction_files/c1bit.png)
+
+Next, the second parity counts an *even* number of 1's in the positions 2,3,6, and 7 so $c_2=0$.
+
+![](/images/2020-02-15-error_correction_files/c2bit.png)
+
+The third parity counts an *odd* number of 1's in the positions 4,5,6, and 7 so $c_3=1$. 
+
+![](/images/2020-02-15-error_correction_files/c3bit.png)
 
 This gives a checking number $c_3 c_2 c_1= \texttt{101}$ which is position 5. Therefore, there is an error in position 5 which can be corrected by converting the `0` into a `1`.
 
@@ -80,7 +90,7 @@ Hamming (1950) gives a way of determining what actions can be done (error detect
 
 The distance $D$ between two bit strings ${x}$ and ${y}$ is given by the Hamming distance.
 
-The Hamming distance is given by the number of positions (or coordinates) where two bit strings differ. 
+> The Hamming distance is given by the number of positions (or coordinates) where two bit strings differ. 
 
 This definition satisfies the conditions for a metric:
 $$
@@ -91,15 +101,16 @@ $$
     \end{split}
 $$
 
-Imagine each code being encoded by corners in a $2^n$ hypercube, then if each code has a distance of $r$ between a neighbouring code, the codes lie on the surface of a $r+1$ sphere centered on some origin. For example, a $r=2$ code with $n=3$ can be: `000`, `011`, `101`, `110`. Each code is a distance 2 apart and sit on the corners of a cube as depicted in this Figure. 
+Imagine each code being encoded by corners in a $2^n$ hypercube, then if each code has a distance of $r$ between a neighbouring code, the codes lie on the surface of a $r+1$ sphere centered on some origin. For example, a $r=2$ code with $n=3$ can be: `000`, `011`, `101`, `110`. Each code is a distance 2 apart and sit on the corners of a cube as depicted in Figure 5. 
+
+![](/images/2020-02-15-error_correction_files/cube.png)
+
+When there is a distance of 2 between the codes, then a single error will convert a point on the cube to a coordinate that is meaningless. This corresponds to single error detection. However, this error cannot be corrected since the false code is equidistant to a number of other true codes. A 3 distance code for $n = 3$ can be: `000`, and `111`. This is shown in Figure 6.
+
+![](/images/2020-02-15-error_correction_files/cube2.png)
 
 
-
-
-When there is a distance of 2 between the codes, then a single error will convert a point on the cube to a coordinate that is meaningless. This corresponds to single error detection. However, this error cannot be corrected since the false code is equidistant to a number of other true codes. 
-
-
-
+When there is a single error, the error can be corrected because the false code will be closer to the correct code than the others. A more detailed list of actions is summarised in the following table.
 
 | Minimum Hamming Distance | Available Actions |
 | --- | --- |
@@ -112,16 +123,16 @@ When there is a distance of 2 between the codes, then a single error will conver
 |   | Single error correction + Triple error detection or |
 |   | Quadruple error detection |
     
-    
+From the table above, it can be seen that an extra Hamming distance of 2 is needed to correct an additional error and an extra Hamming distance of 1 is needed to detect an additional error.
     
 
 # Developments in Error Correction Codes
 
-More general codes can be made by constructing a parity check matrix which contains error correction abilities based on linear dependent columns\cite{gallager1962low}. From there, the mapping between messages and code can be found using a generator matrix computed from the parity matrix\cite{mackay1996near}. The example shown in this essay relied on operations on a Galois (or finite) field with characteristic 2 (so addition and multiplication is done modulo 2). Other fields can also be used such $\mathbf{F}_{11}$ which is implemented in the User Datagram Protocol (UDP). UDP can also fix erasures - when bits are lost rather than flipped\cite{postel1980user}. There is also a family of Hamming codes which include extensions and shortenings that allow Hamming codes to perform better or improve the redundancy factor\cite{wei1991generalized}.
+More general codes can be made by constructing a parity check matrix which contains error correction abilities based on linear dependent columns[^4]. From there, the mapping between messages and code can be found using a generator matrix computed from the parity matrix[^5]. The example shown in this essay relied on operations on a Galois (or finite) field with characteristic 2 (so addition and multiplication is done modulo 2). Other fields can also be used such $\mathbf{F}_{11}$ which is implemented in the User Datagram Protocol (UDP). UDP can also fix erasures - when bits are lost rather than flipped[^6]. There is also a family of Hamming codes which include extensions and shortenings that allow Hamming codes to perform better or improve the redundancy factor[^7].
 
-Multiple error correction codes can be done using Reed-Solomon (RS)\cite{wicker1999reed} and Bose-Chaudhuri-Hocquenghem (BCH)\cite{chien1964cyclic} which can be hard to decode because the number of errors is not known beforehand. By using primitive polynomials for the Galois field, the coding can be done on Linear Feedback Shift Registers (LFSR)\cite{hellebrand1995built}. The location of errors can be found by solving for the roots of an error locator polynomial\cite{truong2001fast} given by the Massey algorithm\cite{feng1991generalization}. Roots of the locator polynomial are found using Chien search and the Forney formula gives a way of computing the values for erasures\cite{leonard1996generalized}. Following this, Sugiyama invented a method for decoding Goppa codes based on the Euclidean algorithm and Kerlekamp's key equation, forgoing the need to find the locator polynomial\cite{sugiyama1975method}. Other decoding methods include the Discrete Fourier Transform (DFT)\cite{blahut1979transform}. 
+Multiple error correction codes can be done using Reed-Solomon (RS)[^8] and Bose-Chaudhuri-Hocquenghem (BCH)[^9] which can be hard to decode because the number of errors is not known beforehand. By using primitive polynomials for the Galois field, the coding can be done on Linear Feedback Shift Registers (LFSR)[^10]. The location of errors can be found by solving for the roots of an error locator polynomial[^11] given by the Massey algorithm[^12]. Roots of the locator polynomial are found using Chien search and the Forney formula gives a way of computing the values for erasures[^13]. Following this, Sugiyama invented a method for decoding Goppa codes based on the Euclidean algorithm and Kerlekamp's key equation, forgoing the need to find the locator polynomial[^14]. Other decoding methods include the Discrete Fourier Transform (DFT)[^15]. 
 
-Many different types of codes exist including cyclic codes and convolutional or continuous codes. For instance, the Chinese remainder theorem is used to decode Fire codes\cite{chien1969burst} which is a type of cyclic code. Convolutional codes can be decoded with the Viterbi algorithm\cite{forney1973viterbi}. Applications of error correcting coding and decoding extend to public key encryption\cite{li1994equivalence} amongst others. 
+Many different types of codes exist including cyclic codes and convolutional or continuous codes. For instance, the Chinese remainder theorem is used to decode Fire codes[^16] which is a type of cyclic code. Convolutional codes can be decoded with the Viterbi algorithm[^17]. Applications of error correcting coding and decoding extend to public key encryption[^18] amongst others. 
 
 
 
@@ -131,4 +142,43 @@ The main ideas of error correction codes using the Hamming code were explored wi
 
 # References
 
-[^1]: (Yu and Wang 2007)
+[1]: Brian J Thompson, Robert Rennie Shannon, et al. Space Optics: Proceedings of the
+Ninth International Congress of the International Commission for Optics (ico IX),
+volume 9. National Academies, 1974.
+[2]: Hengyong Yu and Ge Wang. Compressed sensing based interior tomography. Physics
+in medicine & biology, 54(9):2791, 2009.
+[3]: Richard W Hamming. Error detecting and error correcting codes. The Bell system
+technical journal, 29(2):147–160, 1950.
+[4]: Robert Gallager. Low-density parity-check codes. IRE Transactions on information
+theory, 8(1):21–28, 1962.
+[5]: David JC MacKay and Radford M Neal. Near shannon limit performance of low
+density parity check codes. Electronics letters, 32(18):1645–1646, 1996.
+[6]: Jon Postel. User datagram protocol. Isi, 1980.
+[7]: Victor K Wei. Generalized hamming weights for linear codes. IEEE Transactions
+on information theory, 37(5):1412–1418, 1991.
+[8]: Stephen B Wicker and Vijay K Bhargava. Reed-Solomon codes and their applications.
+John Wiley & Sons, 1999.
+[9]: Robert Chien. Cyclic decoding procedures for bose-chaudhuri-hocquenghem codes.
+IEEE Transactions on information theory, 10(4):357–363, 1964.
+9
+[10]: Sybille Hellebrand, Janusz Rajski, Steffen Tarnick, Srikanth Venkataraman, and
+Bernard Courtois. Built-in test for circuits with scan based on reseeding of
+multiple-polynomial linear feedback shift registers. IEEE Transactions on Computers, 44(2):223–233, 1995.
+[11]: T-K Truong, J-H Jeng, and Irving S Reed. Fast algorithm for computing the roots
+of error locator polynomials up to degree 11 in reed-solomon decoders. IEEE Transactions on Communications, 49(5):779–783, 2001.
+[12]: G-L Feng and Kenneth K Tzeng. A generalization of the berlekamp-massey algorithm for multisequence shift-register synthesis with applications to decoding cyclic
+codes. IEEE Transactions on Information Theory, 37(5):1274–1287, 1991.
+[13]: Douglas A Leonard. A generalized forney formula for algebraic-geometric codes.
+IEEE Transactions on Information Theory, 42(4):1263–1268, 1996.
+[14]: Yasuo Sugiyama, Masao Kasahara, Shigeichi Hirasawa, and Toshihiko Namekawa. A
+method for solving key equation for decoding goppa codes. Information and Control,
+27(1):87–99, 1975.
+[15]: Richard E. Blahut. Transform techniques for error control codes. IBM Journal of
+Research and development, 23(3):299–315, 1979.
+[16]: R Chien. Burst-correcting codes with high-speed decoding. IEEE Transactions on
+Information Theory, 15(1):109–113, 1969.
+[17]: G David Forney. The viterbi algorithm. Proceedings of the IEEE, 61(3):268–278,
+1973.
+[18]: Yuan Xing Li, Robert H Deng, and Xin Mei Wang. On the equivalence of mceliece’s
+and niederreiter’s public-key cryptosystems. IEEE Transactions on Information
+Theory, 40(1):271–273, 1994.

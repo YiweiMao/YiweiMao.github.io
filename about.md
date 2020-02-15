@@ -1,6 +1,6 @@
 # About
 
-I am about to commence my PhD at the University of Sydney working on remote sensing. My interests lie in computer vision and machine learning. 
+I am about to commence my PhD at the University of Sydney working on remote sensing. My interests lie in computer vision and machine learning. <br>
 I am also a musician in my spare time playing the Euphonium in the Parramatta Salvation Army Brass Band. 
 
 ## Experience
@@ -19,7 +19,7 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 
 ### Academic Awards
 | Year | Award |
-| -: | :- |
+| ---: | :--- |
 | 2019 | First Class Honours |
 | 2018 | William and Jane Grahame Mechanical Engineering Minor Prize |
 | 2017 - 2018 | Norbert Quirk Prizes No 3 |
