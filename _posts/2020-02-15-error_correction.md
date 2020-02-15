@@ -84,7 +84,7 @@ Another example of a Hamming code is triple repetition. Each bit is sent three t
 
 Double error detection can be added by using another bit that represents the parity for positions, that when expressed in binary, have a 1 in the $4^{th}$ position. Then there exists three cases with the first being all parity checks pass. The second case is when there is a single error and the last parity check fails. The checking number then gives the position of the error with zero now meaning the error is in the last check position. The last case is then the last parity check is satisfied but the checking number indicates that there is an error. In this case, there is a double error. 
 
-Hamming (1950)[^3] gives a way of determining what actions can be done (error detection or error correction) by introducing a metric.
+Hamming (1950) [^3] gives a way of determining what actions can be done (error detection or error correction) by introducing a metric.
 
 # Hamming Distance
 
