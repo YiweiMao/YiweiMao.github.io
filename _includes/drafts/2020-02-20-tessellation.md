@@ -6,15 +6,35 @@
 
 ## What is Tessellation
 
-Dynamically
+Dynamically increase 
 
 ## Tessellation Factors
+
+### Inner Factors
+
+
+### Outer Factors
+
 
 
 ## Parity
 
+### Odd
+
+
+### Even
+
 
 ## Output Domains
+
+
+### Isoline
+
+
+### Triangle
+
+
+### Quadrilateral
 
 
 ![]()

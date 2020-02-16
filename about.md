@@ -32,6 +32,16 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 | 2014 | RoboCup Junior Australia National Competition (2nd place) |
 
 
+## Academic Papers
+
+
+| Year | Paper Title |
+| -: | :- |
+| 2020 | TweetS@: A 3D Printed CubeSat Tweeting From Space |
+|   | Australian Space Research Conference 2019 Proceedings |
+
+
+
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
 Personal blog: <https://yiweimao.github.io>
