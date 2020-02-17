@@ -62,19 +62,19 @@ The $i^{th}$ check bit records the parity of bit positions which have a 1 in the
 Consider a 7 bit string $\mathrm{b_7b_6b_5b_4b_3b_2b_1}=\texttt{0111100}$ which encodes a bit string ${\mathrm{m_4 m_3 m_2 m_1} = \texttt{b1011} = 11}$ and check bits $\mathrm{k_3 k_2 k_1} = \texttt{b001}$. This is the Hamming(7,4) code meaning $n=7$ and $m=4$.
 
 The original bit string:
-![](/images/2020-02-15-error_correction_files/origbits.png)
+![](/images/2020-02-15-error_correction_files/origbits.png){width=60%}
 
 Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. In Figure 1, the first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
 
-![](/images/2020-02-15-error_correction_files/c1bit.png)
+![](/images/2020-02-15-error_correction_files/c1bit.png){width=60%}
 
 Next, the second parity counts an *even* number of 1's in the positions 2,3,6, and 7 so $c_2=0$.
 
-![](/images/2020-02-15-error_correction_files/c2bit.png)
+![](/images/2020-02-15-error_correction_files/c2bit.png){width=60%}
 
 The third parity counts an *odd* number of 1's in the positions 4,5,6, and 7 so $c_3=1$. 
 
-![](/images/2020-02-15-error_correction_files/c3bit.png)
+![](/images/2020-02-15-error_correction_files/c3bit.png){width=60%}
 
 This gives a checking number $c_3 c_2 c_1= \texttt{101}$ which is position 5. Therefore, there is an error in position 5 which can be corrected by converting the `0` into a `1`.
 

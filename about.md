@@ -32,7 +32,7 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 | 2014 | RoboCup Junior Australia National Competition (2nd place) |
 
 
-## Academic Papers
+### Academic Papers
 
 
 | Year | Paper Title |
