@@ -74,7 +74,8 @@ Next, the second parity counts an *even* number of 1's in the positions 2,3,6, a
 
 The third parity counts an *odd* number of 1's in the positions 4,5,6, and 7 so $c_3=1$. 
 
-![](/images/2020-02-15-error_correction_files/c3bit.png){:width="60%"}
+![](/images/2020-02-15-error_correction_files/c3bit.png | width="60%" )
+<img src="/images/2020-02-15-error_correction_files/c3bit.png" width="400">
 
 This gives a checking number $c_3 c_2 c_1= \texttt{101}$ which is position 5. Therefore, there is an error in position 5 which can be corrected by converting the `0` into a `1`.
 
