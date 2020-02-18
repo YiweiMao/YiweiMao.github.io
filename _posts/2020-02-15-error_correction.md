@@ -17,7 +17,7 @@ Let the bit length of a message be denoted by $m$. This message can represent $2
 
 The redundancy factor $R$ is defined to be
 $$
-K := \frac{n}{m}
+R := \frac{n}{m}
 $$
 and this measures the efficiency of the encoding. 
 Redundancy is also a method of generating sparse decompositions of signals and this is known as compressed sensing. This method has applications in computed tomography because image reconstruction can be formulated as a compressed sensing problem[^2].
@@ -66,7 +66,7 @@ The original bit string:
 
 Suppose the bit $\mathrm{m_2}$ in position 5 has an error so instead of the original 1, it is now 0. The checking number $\mathrm{c_3 c_2 c_1}$ can be computed. In Figure 1, the first parity counts an *odd* number of 1's in positions 1,3,5, and 7 so $c_1=1$.
 
-![](/images/2020-02-15-error_correction_files/c1bit.png "Figure 2: Bit string with bit b5 corrupted. First parity bit is checked."){:width="60%"}
+![](/images/2020-02-15-error_correction_files/c1bit.png "Figure 2: Bit string with bit 5 corrupted. First parity bit is checked."){:width="60%"}
 
 Next, the second parity counts an *even* number of 1's in the positions 2,3,6, and 7 so $c_2=0$.
 
