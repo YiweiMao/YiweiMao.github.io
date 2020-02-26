@@ -57,12 +57,11 @@ The tessellation stages consistes of three new stages which are:
 * Domain-Shader (DS) Stage
 > Calculates vertex position that corresponds to the each u,v coordinate.
 
-{% include info.html text="[OpenGL](https://www.khronos.org/opengl/wiki/Tessellation) uses the names Tessellation Control Shader, Primitive Generator, and Tessellation Evaulation Shader to refer to the HS, Tess, and DS respectively." %}
+[OpenGL](https://www.khronos.org/opengl/wiki/Tessellation) uses the names Tessellation Control Shader, Primitive Generator, and Tessellation Evaulation Shader to refer to the HS, Tess, and DS respectively.
 
-{% include info.html text="As an aside, the word "shader" refers to an operation that transforms four input numbers into four output numbers. Historically,  a shader was used to change the brightness of pixels (RGBA values) but now encompasses more general operations and the name has stuck." %}
+As an aside, the word "shader" refers to an operation that transforms four input numbers into four output numbers. Historically,  a shader was used to change the brightness of pixels (RGBA values) but now encompasses more general operations and the name has stuck.
 
-
-{% include info.html text="OpenGL and DX using different winding order. The winding order determines the order the vertex stream arrives and this information can be used to check if a patch is facing the screen or away from the screen." %}
+OpenGL and DX using different winding order. The winding order determines the order the vertex stream arrives and this information can be used to check if a patch is facing the screen or away from the screen.
 
 The parameters for the Tessellator stage are: winding order, tessellation factors, partitioning type, and primitive type. 
 
