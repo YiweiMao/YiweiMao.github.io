@@ -125,22 +125,26 @@ For a triangle, barycentric coordinates are used to represent a 2D position usin
 #### Barycentric Coordinates
 Barycentric coordinates can be understood as a ratio of areas with $A$ representing the total area. 
 $$
-\begin{split}
-\alpha &= A_A/A \\
-\beta &= A_B/A \\
-\gamma &= A_C/A 
-\end{split}
+\alpha = A_A/A 
+$$ 
+$$
+\beta = A_B/A 
+$$
+$$
+\gamma = A_C/A 
 $$
 The coordinates ($\alpha, \beta, \gamma$) must sum to unity because the sum of each component subtriangle area must equal the total area of the original triangle. Furthermore, the coordinates are between 0 and 1 because the point $\mathbf{x}$ defines a point within the large triangle. If any of the coordinates are negative or greater than 1, this would corespond to a point outside the allowable triangle. 
 
 $\mathbf{b-a}$ and $\mathbf{c-a}$ span an linearly independent vector space and are the basis vectors for a triangle with origin $\mathbf{a}$. 
 
 $$
-\begin{split}
-\mathbf{x} &= \mathbf{a} + \beta( \mathbf{b-a}  ) + \gamma(\mathbf{c-a}) \\
-&= (1-\beta - \gamma) \mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c} \\
-&= \alpha \mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c}
-\end{split}
+\mathbf{x} &= \mathbf{a} + \beta( \mathbf{b-a}  ) + \gamma(\mathbf{c-a})
+$$
+$$
+= (1-\beta - \gamma) \mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c}
+$$
+$$
+= \alpha \mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c}
 $$
 
 So the "colour" coordinate at point $\mathbf{x}$ is some linear combination of the triangle vertices. 
