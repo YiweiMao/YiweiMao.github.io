@@ -3,6 +3,8 @@
 I am doing my PhD at the University of Sydney working on remote sensing. My interests lie in computer vision and machine learning. <br>
 I am also a musician in my spare time playing the Euphonium in the Parramatta Salvation Army Brass Band. 
 
+This page has now moved to [yiweimao.github.io/blog/about/](https://yiweimao.github.io/blog/about/).
+
 ## Experience
 
 1. Imagination Technologies<br>
@@ -30,4 +32,4 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
-Personal blog: <https://yiweimao.github.io>
+Personal blog: <https://yiweimao.github.io/blob/>
