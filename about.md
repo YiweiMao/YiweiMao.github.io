@@ -32,4 +32,4 @@ I studied Mechatronics Engineering and Advanced Science (majored in Physics and 
 
 ## Contact Details
 Email: <ewaymao@gmail.com><br>
-Personal blog: <https://yiweimao.github.io/blob/>
+Personal blog: <https://yiweimao.github.io/blog/>
